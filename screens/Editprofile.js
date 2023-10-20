@@ -105,7 +105,7 @@ import {
               />
   
               <TouchableOpacity onPress={handleOnPressStartDate}>
-                <Text style={{ color: COLORS.white }}>Close</Text>
+                <Text style={{  color: COLORS.white }}>Close</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -188,7 +188,7 @@ import {
                 marginBottom: 6,
               }}
             >
-              <Text>Name</Text>
+              <Text >Name</Text>
               <View
                 style={{
                   height: 44,
@@ -327,6 +327,7 @@ import {
           >
             <Text
               style={{
+               
                 color: COLORS.white,
               }}
             >

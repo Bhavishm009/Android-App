@@ -135,6 +135,7 @@ import {
           <Text
             style={{
               
+              
               color: COLORS.primary,
               marginVertical: 8,
             }}
@@ -144,6 +145,7 @@ import {
           <Text
             style={{
               color: COLORS.black,
+              
             }}
           >
             Interior designer
@@ -159,6 +161,7 @@ import {
             <MaterialIcons name="location-on" size={24} color="black" />
             <Text
               style={{
+               
                 marginLeft: 4,
               }}
             >
@@ -181,6 +184,7 @@ import {
             >
               <Text
                 style={{
+                
                   color: COLORS.primary,
                 }}
               >
@@ -188,6 +192,7 @@ import {
               </Text>
               <Text
                 style={{
+                 
                   color: COLORS.primary,
                 }}
               >
@@ -204,6 +209,7 @@ import {
             >
               <Text
                 style={{
+             
                   color: COLORS.primary,
                 }}
               >
@@ -211,6 +217,7 @@ import {
               </Text>
               <Text
                 style={{
+                 
                   color: COLORS.primary,
                 }}
               >
@@ -227,6 +234,7 @@ import {
             >
               <Text
                 style={{
+               
                   color: COLORS.primary,
                 }}
               >
@@ -234,6 +242,7 @@ import {
               </Text>
               <Text
                 style={{
+                 
                   color: COLORS.primary,
                 }}
               >
@@ -256,6 +265,7 @@ import {
             >
               <Text onPress={() => navigation.navigate('Edit-Profile')}
                 style={{
+                
                   color: COLORS.white,
                 }}
               >
@@ -276,6 +286,7 @@ import {
             >
               <Text
                 style={{
+                  
                   color: COLORS.white,
                 }}
               >
