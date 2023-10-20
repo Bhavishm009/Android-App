@@ -134,7 +134,7 @@ import {
   
           <Text
             style={{
-              ...FONTS.h3,
+              
               color: COLORS.primary,
               marginVertical: 8,
             }}
@@ -144,7 +144,6 @@ import {
           <Text
             style={{
               color: COLORS.black,
-              ...FONTS.body4,
             }}
           >
             Interior designer
@@ -160,7 +159,6 @@ import {
             <MaterialIcons name="location-on" size={24} color="black" />
             <Text
               style={{
-                ...FONTS.body4,
                 marginLeft: 4,
               }}
             >
@@ -183,7 +181,6 @@ import {
             >
               <Text
                 style={{
-                  ...FONTS.h2,
                   color: COLORS.primary,
                 }}
               >
@@ -191,7 +188,6 @@ import {
               </Text>
               <Text
                 style={{
-                  ...FONTS.body4,
                   color: COLORS.primary,
                 }}
               >
@@ -208,7 +204,6 @@ import {
             >
               <Text
                 style={{
-                  ...FONTS.h2,
                   color: COLORS.primary,
                 }}
               >
@@ -216,7 +211,6 @@ import {
               </Text>
               <Text
                 style={{
-                  ...FONTS.body4,
                   color: COLORS.primary,
                 }}
               >
@@ -233,7 +227,6 @@ import {
             >
               <Text
                 style={{
-                  ...FONTS.h2,
                   color: COLORS.primary,
                 }}
               >
@@ -241,7 +234,6 @@ import {
               </Text>
               <Text
                 style={{
-                  ...FONTS.body4,
                   color: COLORS.primary,
                 }}
               >
@@ -264,7 +256,6 @@ import {
             >
               <Text onPress={() => navigation.navigate('Edit-Profile')}
                 style={{
-                  ...FONTS.body4,
                   color: COLORS.white,
                 }}
               >
@@ -285,7 +276,6 @@ import {
             >
               <Text
                 style={{
-                  ...FONTS.body4,
                   color: COLORS.white,
                 }}
               >

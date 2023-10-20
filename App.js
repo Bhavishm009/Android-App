@@ -87,23 +87,7 @@ function HomeTabs() {
   );
 }
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    black: require('./assets/fonts/Inter-Black.ttf'),
-    bold: require('./assets/fonts/Inter-Bold.ttf'),
-    medium: require('./assets/fonts/Inter-Medium.ttf'),
-    regular: require('./assets/fonts/Inter-Regular.ttf'),
-    semiBold: require('./assets/fonts/Inter-SemiBold.ttf'),
-  });
-
-  const onLayoutRootView = useCallback(async ()=>{
-    if(fontsLoaded){
-      await SplashScreen.hideAsync();
-    }
-  },[fontsLoaded]);
-
-  if(!fontsLoaded){
-    return null
-  }
+  
   return (
     <Provider store={store}>
 
