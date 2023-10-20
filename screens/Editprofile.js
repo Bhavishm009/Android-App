@@ -105,7 +105,7 @@ import {
               />
   
               <TouchableOpacity onPress={handleOnPressStartDate}>
-                <Text style={{ ...FONTS.body3, color: COLORS.white }}>Close</Text>
+                <Text style={{  color: COLORS.white }}>Close</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -142,7 +142,7 @@ import {
             />
           </TouchableOpacity>
   
-          <Text style={{ ...FONTS.h3 }}>Edit Profile</Text>
+          <Text >Edit Profile</Text>
         </View>
   
         <ScrollView>
@@ -188,7 +188,7 @@ import {
                 marginBottom: 6,
               }}
             >
-              <Text style={{ ...FONTS.h4 }}>Name</Text>
+              <Text >Name</Text>
               <View
                 style={{
                   height: 44,
@@ -215,7 +215,7 @@ import {
                 marginBottom: 6,
               }}
             >
-              <Text style={{ ...FONTS.h4 }}>Email</Text>
+              <Text >Email</Text>
               <View
                 style={{
                   height: 44,
@@ -242,7 +242,7 @@ import {
                 marginBottom: 6,
               }}
             >
-              <Text style={{ ...FONTS.h4 }}>Password</Text>
+              <Text >Password</Text>
               <View
                 style={{
                   height: 44,
@@ -270,7 +270,7 @@ import {
                 marginBottom: 6,
               }}
             >
-              <Text style={{ ...FONTS.h4 }}>Date or Birth</Text>
+              <Text >Date or Birth</Text>
               <TouchableOpacity
                 onPress={handleOnPressStartDate}
                 style={{
@@ -295,7 +295,7 @@ import {
               marginBottom: 6,
             }}
           >
-            <Text style={{ ...FONTS.h4 }}>Country</Text>
+            <Text >Country</Text>
             <View
               style={{
                 height: 44,
@@ -327,7 +327,7 @@ import {
           >
             <Text
               style={{
-                ...FONTS.body3,
+               
                 color: COLORS.white,
               }}
             >
