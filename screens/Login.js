@@ -43,7 +43,7 @@ const Login = ({ navigation }) => {
   };
 
   function goToHome(){
-    navigation.navigate("Home");
+    navigation.navigate("Fetch");
   }
 
   return (
@@ -196,7 +196,7 @@ const Login = ({ navigation }) => {
 
         <Button
           onPress={goToHome}
-          title="Go To Home"
+          title="Go To Counter"
           filled
           style={{
             marginTop: 18,
