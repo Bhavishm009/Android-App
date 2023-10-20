@@ -120,6 +120,7 @@ import {
           backgroundColor: COLORS.white,
           paddingHorizontal: 22,
         }}
+        edges={['top']}
       >
         <View
           style={{

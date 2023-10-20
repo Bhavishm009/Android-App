@@ -105,7 +105,7 @@ import {
           flex: 1,
           backgroundColor: COLORS.white,
         }}
-      >
+        edges={['top']}>
         <StatusBar backgroundColor={COLORS.gray} />
         <View style={{ width: "100%" }}>
           <Image
