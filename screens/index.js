@@ -8,6 +8,8 @@ import ProfileScreen from "./ProfileScreen";
 import PostScreen from "./PostScreen";
 import Timeline from "./Timeline";
 import Editprofile from "./Editprofile";
+import Counter from "./Counter"
+import FetchData from "./FetchData";
 export {
     Login,
     Welcome,
@@ -18,5 +20,7 @@ export {
     ProfileScreen,
     PostScreen,
     Timeline,
-    Editprofile
+    Editprofile,
+    Counter,
+    FetchData
 }

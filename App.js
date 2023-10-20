@@ -11,8 +11,12 @@ import {
   ProfileScreen,
   PostScreen,
   Home,
+  Counter,
   Timeline,
+  FetchData,
 } from "./screens/index";
+import { Provider } from "react-redux";
+import store from "./store/store"
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import EditProfile from "./screens/Editprofile";
@@ -101,6 +105,8 @@ export default function App() {
     return null
   }
   return (
+    <Provider store={store}>
+
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Welcome"
@@ -113,7 +119,10 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="Edit-Profile" component={EditProfile} />
+        <Stack.Screen name="Counter" component={Counter}/>
+        <Stack.Screen name="Fetch" component={FetchData}/>
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }
