@@ -12,43 +12,33 @@ import COLORS from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import Button from "../components/Button";
-import auth from "@react-native-firebase/auth";
-import db from "@react-native-firebase/database";
-
-
+import { useRegisterMutation } from "../store/slices/apiSlice";
 
 const Signup = ({ navigation }) => {
-
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [name, setName] = useState("Bhavish");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("7721841331");
 
-  
-  const createProfile = async (response) => {
-    db().ref(`/users/${response.user.id}`).set({ name });
-  };
-  console.log(email, password);
+  const [register] = useRegisterMutation();
 
-  const handleSignUp = async () => {
-    if (email && password) {
-      try {
-        const response = await auth().createUserWithEmailAndPassword(
-          email,
-          password
-        );
-        console.log(response);
-        if (response.user) {
-          await createProfile(response);
-        }
-        navigation.navigate("Home");
-      } catch (error) {
-        console.log(error)
-      }
+  const handleRegister = async (userData) => {
+    try {
+      const userData = {
+        name,
+        email,
+        password,
+        mobileNumber,
+      };
+      console.log(userData);
+      const result = await register(userData);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
     }
   };
-
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: COLORS.white }}
@@ -104,8 +94,8 @@ const Signup = ({ navigation }) => {
               placeholder="Enter your email address"
               placeholderTextColor={COLORS.black}
               keyboardType="email-address"
-              onChangeText={setEmail}
               value={email}
+              onChangeText={(text) => setEmail(text)}
               style={{
                 width: "100%",
               }}
@@ -141,6 +131,8 @@ const Signup = ({ navigation }) => {
               placeholder="+91"
               placeholderTextColor={COLORS.black}
               keyboardType="numeric"
+              
+              
               style={{
                 width: "12%",
                 borderRightWidth: 1,
@@ -153,8 +145,8 @@ const Signup = ({ navigation }) => {
               placeholder="Enter your phone number"
               placeholderTextColor={COLORS.black}
               keyboardType="numeric"
-              onChangeText={setPassword}
-              value={password}
+              value={mobileNumber}
+              onChangeText={(text) => setMobileNumber(text)}
               style={{
                 width: "80%",
               }}
@@ -189,6 +181,8 @@ const Signup = ({ navigation }) => {
               placeholder="Enter your password"
               placeholderTextColor={COLORS.black}
               secureTextEntry={isPasswordShown}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
               style={{
                 width: "100%",
               }}
@@ -227,7 +221,7 @@ const Signup = ({ navigation }) => {
         </View>
 
         <Button
-          onPress={handleSignUp}
+          onPress={handleRegister}
           title="Sign Up"
           filled
           style={{
