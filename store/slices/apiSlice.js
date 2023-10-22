@@ -1,7 +1,7 @@
 // apiSlice.js
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NODE_ENV ==="development"? process.env.REACT_APP_LOCAL_URL :process.env.REACT_APP_BACKEND_URL,
+  baseUrl: process.env.NODE_ENV ==="development" ? process.env.REACT_APP_LOCAL_URL :process.env.REACT_APP_BACKEND_URL,
   method: "GET",
 });
 
