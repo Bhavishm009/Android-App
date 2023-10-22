@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {useFonts} from 'expo-font'
+import { useFonts } from "expo-font";
 import {
   Login,
   Signup,
@@ -16,11 +16,11 @@ import {
   FetchData,
 } from "./screens/index";
 import { Provider } from "react-redux";
-import store from "./store/store"
+import store from "./store/store";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import EditProfile from "./screens/Editprofile";
-
+import { usePushNotifications } from "./usePushNotofication";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -36,7 +36,6 @@ function HomeTabs() {
       }}
       initialRouteName="Timeline"
     >
-    
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
@@ -55,12 +54,25 @@ function HomeTabs() {
           ),
         }}
       />
-        <Tab.Screen
+      <Tab.Screen
         name="Post"
         component={PostScreen}
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Ionicons name="ios-add-circle" color='#E9446A' size={48} style={{shadowColor:'#E9446A',shadowOffset:{width:0,height:0,ShadowRadius:10,shadowOpacity:0.4}}} />
+            <Ionicons
+              name="ios-add-circle"
+              color="#E9446A"
+              size={48}
+              style={{
+                shadowColor: "#E9446A",
+                shadowOffset: {
+                  width: 0,
+                  height: 0,
+                  ShadowRadius: 10,
+                  shadowOpacity: 0.4,
+                },
+              }}
+            />
           ),
         }}
       />
@@ -71,7 +83,7 @@ function HomeTabs() {
           tabBarIcon: ({ tintColor }) => (
             <Ionicons name="ios-chatbubbles" size={30} color={tintColor} />
           ),
-          tabBarBadge:3,
+          tabBarBadge: 3,
         }}
       />
       <Tab.Screen
@@ -87,26 +99,39 @@ function HomeTabs() {
   );
 }
 export default function App() {
+  const { expoPushToken } = usePushNotifications();
+  console.log(expoPushToken);
+  const [samples, setSamples] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        "http://192.168.2.28:8000/analytics?userId=0000001"
+      );
+      const json = await response.json();
+      const samples = json.previousMoistureLevels.slice(-10);
+      setSamples(samples);
+    })();
+  }, []);
 
   return (
     <Provider store={store}>
-
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Welcome"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={HomeTabs} />
-        <Stack.Screen name="Edit-Profile" component={EditProfile} />
-        <Stack.Screen name="Counter" component={Counter}/>
-        <Stack.Screen name="Fetch" component={FetchData}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Home" component={HomeTabs} />
+          <Stack.Screen name="Edit-Profile" component={EditProfile} />
+          <Stack.Screen name="Counter" component={Counter} />
+          <Stack.Screen name="Fetch" component={FetchData} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }
