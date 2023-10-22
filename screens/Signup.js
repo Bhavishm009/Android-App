@@ -23,8 +23,8 @@ const Signup = ({ navigation }) => {
   const [mobileNumber, setMobileNumber] = useState("");
 
   const [register] = useRegisterMutation();
-  
-  const handleRegister = async (userData) => {
+
+  const handleRegister = async () => {
     try {
       const userData = {
         name,
