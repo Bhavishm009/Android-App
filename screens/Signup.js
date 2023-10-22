@@ -24,7 +24,7 @@ const Signup = ({ navigation }) => {
 
   const [register] = useRegisterMutation();
 
-  const handleRegister = async (userData) => {
+  const handleRegister = async () => {
     try {
       const userData = {
         name,
@@ -32,7 +32,6 @@ const Signup = ({ navigation }) => {
         password,
         mobileNumber,
       };
-      console.log(userData);
       const result = await register(userData);
       console.log(result);
     } catch (error) {
