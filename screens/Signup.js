@@ -17,10 +17,10 @@ import { useRegisterMutation } from "../store/slices/apiSlice";
 const Signup = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [name, setName] = useState("Bhavish");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("7721841331");
+  const [mobileNumber, setMobileNumber] = useState("");
 
   const [register] = useRegisterMutation();
 
@@ -45,7 +45,7 @@ const Signup = ({ navigation }) => {
       edges={["top"]}
     >
       <View style={{ flex: 1, marginHorizontal: 22 }}>
-        <View style={{ marginVertical: 90 }}>
+        <View style={{ marginVertical: 40 }}>
           <Text
             style={{
               fontSize: 22,
@@ -66,6 +66,43 @@ const Signup = ({ navigation }) => {
             Connect with your friend today!
           </Text>
         </View>
+
+        <View style={{ marginBottom: 12 }}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 400,
+              marginVertical: 8,
+            }}
+          >
+            Name
+          </Text>
+
+          <View
+            style={{
+              width: "100%",
+              height: 48,
+              borderColor: COLORS.black,
+              borderWidth: 1,
+              borderRadius: 8,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingLeft: 22,
+            }}
+          >
+            <TextInput
+              placeholder="Enter your name"
+              placeholderTextColor={COLORS.black}
+              keyboardType="text"
+              value={name}
+              onChangeText={(text) => setName(text)}
+              style={{
+                width: "100%",
+              }}
+            />
+          </View>
+        </View>
+
 
         <View style={{ marginBottom: 12 }}>
           <Text

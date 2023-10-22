@@ -20,7 +20,7 @@ import store from "./store/store";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import EditProfile from "./screens/Editprofile";
-import { usePushNotifications } from "./usePushNotofication";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -99,21 +99,7 @@ function HomeTabs() {
   );
 }
 export default function App() {
-  const { expoPushToken } = usePushNotifications();
-  console.log(expoPushToken);
-  const [samples, setSamples] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "http://192.168.2.28:8000/analytics?userId=0000001"
-      );
-      const json = await response.json();
-      const samples = json.previousMoistureLevels.slice(-10);
-      setSamples(samples);
-    })();
-  }, []);
-
+  
   return (
     <Provider store={store}>
       <NavigationContainer>
