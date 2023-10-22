@@ -10,6 +10,7 @@ import Timeline from "./Timeline";
 import Editprofile from "./Editprofile";
 import Counter from "./Counter"
 import FetchData from "./FetchData";
+import VerifyOtp from "./VerifyOtp";
 export {
     Login,
     Welcome,
@@ -22,5 +23,6 @@ export {
     Timeline,
     Editprofile,
     Counter,
-    FetchData
+    FetchData,
+    VerifyOtp
 }

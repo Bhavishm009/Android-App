@@ -23,7 +23,7 @@ const Signup = ({ navigation }) => {
   const [mobileNumber, setMobileNumber] = useState("");
 
   const [register] = useRegisterMutation();
-
+  
   const handleRegister = async (userData) => {
     try {
       const userData = {
@@ -32,9 +32,12 @@ const Signup = ({ navigation }) => {
         password,
         mobileNumber,
       };
-      console.log(userData);
       const result = await register(userData);
-      console.log(result);
+      console.log(result)
+      if (result?.data.success) {
+        console.log(result?.success)
+        navigation.navigate("Verify");
+      }
     } catch (error) {
       console.log(error);
     }

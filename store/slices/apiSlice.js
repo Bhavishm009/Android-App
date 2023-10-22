@@ -1,19 +1,20 @@
-// apiSlice.js
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NODE_ENV ==="development"? "http://192.168.1.37:8000":process.env.REACT_APP_BACKEND_URL,
-  method: "GET",
-});
 
 export const api = createApi({
-  baseQuery,
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({
+    baseUrl:
+      process.env.NODE_ENV === "development"
+        ? "http://192.168.245.129:7000"
+        : process.env.REACT_APP_BACKEND_URL,
+  }),
   endpoints: (builder) => ({
     fetchData: builder.query({
       query: () => "/api/githubjson", // Endpoint URL
     }),
     register: builder.mutation({
       query: (userData) => ({
-        url: "/api/register",
+        url: "/api/auth/register",
         method: "POST",
         body: userData, // Assuming userData is an object containing registration data
       }),
