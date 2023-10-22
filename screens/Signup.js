@@ -33,7 +33,11 @@ const Signup = ({ navigation }) => {
         mobileNumber,
       };
       const result = await register(userData);
-      console.log(result);
+      console.log(result)
+      if (result?.data.success) {
+        console.log(result?.success)
+        navigation.navigate("Verify");
+      }
     } catch (error) {
       console.log(error);
     }

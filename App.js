@@ -14,13 +14,13 @@ import {
   Counter,
   Timeline,
   FetchData,
+  VerifyOtp,
 } from "./screens/index";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import EditProfile from "./screens/Editprofile";
-
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -99,7 +99,6 @@ function HomeTabs() {
   );
 }
 export default function App() {
-  
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -116,6 +115,13 @@ export default function App() {
           <Stack.Screen name="Edit-Profile" component={EditProfile} />
           <Stack.Screen name="Counter" component={Counter} />
           <Stack.Screen name="Fetch" component={FetchData} />
+          <Stack.Screen
+            name="Verify"
+            component={VerifyOtp}
+            options={{
+              headerShown: true,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
