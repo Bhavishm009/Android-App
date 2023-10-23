@@ -21,7 +21,6 @@ import store from "./store/store";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import EditProfile from "./screens/Editprofile";
-
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -99,6 +98,7 @@ function HomeTabs() {
   );
 }
 export default function App() {
+ 
   return (
     <Provider store={store}>
       <NavigationContainer>
@@ -120,6 +120,8 @@ export default function App() {
             component={VerifyOtp}
             options={{
               headerShown: true,
+              headerTitle: "Verify OTP",
+              headerTitleAlign: "center", // Center the title
             }}
           />
         </Stack.Navigator>
