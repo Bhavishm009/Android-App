@@ -5,18 +5,27 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl:
       process.env.NODE_ENV === "development"
-        ? "http://192.168.245.129:7000"
+        ? "http://192.168.126.129:7000"
         : process.env.REACT_APP_BACKEND_URL,
   }),
   endpoints: (builder) => ({
     fetchData: builder.query({
-      query: () => "/api/githubjson", // Endpoint URL
+      query: () => "/api/getall", // Endpoint URL
+      providesTags: ["user"],
     }),
     register: builder.mutation({
       query: (userData) => ({
-        url: "/api/auth/register",
+        url: "/api/register",
         method: "POST",
         body: userData, // Assuming userData is an object containing registration data
+        invalidatesTags: ["user"],
+      }),
+    }),
+    verifyOtp: builder.mutation({
+      query: ({ id, otp }) => ({
+        url: `/api/verifyaccount/${id}/${otp}`, // Assuming this is the endpoint for verifying OTP
+        method: "GET", // You may need to adjust the method
+        invalidatesTags: ["user"], // Assuming this invalidates the user tag
       }),
     }),
     login: builder.mutation({
@@ -29,4 +38,9 @@ export const api = createApi({
   }),
 });
 
-export const { useFetchDataQuery, useRegisterMutation, useLoginMutation } = api;
+export const {
+  useFetchDataQuery,
+  useRegisterMutation,
+  useLoginMutation,
+  useVerifyOtpMutation,
+} = api;

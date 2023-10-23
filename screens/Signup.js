@@ -26,18 +26,21 @@ const Signup = ({ navigation }) => {
 
   const handleRegister = async () => {
     try {
+
       const userData = {
         name,
         email,
         password,
         mobileNumber,
       };
-      const result = await register(userData);
-      console.log(result)
-      if (result?.data.success) {
-        console.log(result?.success)
-        navigation.navigate("Verify");
+
+      const user = await register(userData);
+      console.log(user.data.success);
+      
+      if (user.data.success) {
+        navigation.navigate("Verify", { user });
       }
+
     } catch (error) {
       console.log(error);
     }
@@ -106,7 +109,6 @@ const Signup = ({ navigation }) => {
           </View>
         </View>
 
-
         <View style={{ marginBottom: 12 }}>
           <Text
             style={{
@@ -171,8 +173,6 @@ const Signup = ({ navigation }) => {
               placeholder="+91"
               placeholderTextColor={COLORS.black}
               keyboardType="numeric"
-              
-              
               style={{
                 width: "12%",
                 borderRightWidth: 1,
