@@ -19,10 +19,7 @@ const Home = () => {
 
   return (
     <LinearGradient
-      style={{
-        flex: 1,
-      }}
-      colors={[COLORS.secondary, COLORS.primary]}
+      
     >
       <View style={{ flex: 1 }}>
         
