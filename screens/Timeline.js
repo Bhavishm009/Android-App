@@ -6,16 +6,7 @@ import makeApiCall from "../api/api";
 
 
 const Timeline = () => {
-  useEffect(() => {
-    const url = "https://fullstack-app-8urj.onrender.com/api/githubjson";
-    const method = "get";
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    makeApiCall(url, method, headers)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }, []);
+
 
   return (
     <LinearGradient

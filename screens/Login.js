@@ -5,6 +5,7 @@ import {
   Pressable,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,8 +13,7 @@ import COLORS from "../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import Button from "../components/Button";
-import makeApiCall from "../api/api";
-
+import { useLoginMutation } from "../store/slices/apiSlice";
 
 const Login = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -21,33 +21,32 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState([]);
-
+  const [login] = useLoginMutation();
   const handleLogin = async () => {
-    const url = "https://fullstack-app-8urj.onrender.com/api/login";
-    const method = "post";
-    const headers = {
-      "Content-Type": "application/json",
-    };
     const data = {
       email: email,
       password: password,
     };
-
     try {
-      const response = await makeApiCall(url, method, headers, data);
-      console.log(response);
-      navigation.navigate("Home");
-    } catch (error) {
-      console.error(error);
+      let result = await login(data);
+      console.log(result)
+      if (result.data.success) {
+        navigation.navigate("Home");
+      }
+    } catch (err) {
+      Alert.alert(err);
     }
   };
 
-  function goToHome(){
+  function goToHome() {
     navigation.navigate("Fetch");
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }} edges={['top']}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: COLORS.white }}
+      edges={["top"]}
+    >
       <View style={{ flex: 1, marginHorizontal: 22 }}>
         <View style={{ marginVertical: 90 }}>
           <Text
