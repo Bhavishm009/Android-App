@@ -24,13 +24,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "permissions": [
+        "CAMERA_ROLL",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "package": "com.chatapp.chatapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "@react-native-firebase/app",
       [
         "expo-build-properties",
         {
@@ -42,7 +46,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "da688f62-1602-46ae-b25e-40579592db41"
+        "projectId": "4b28a776-ec0e-47d8-adba-b6828af67d22"
       }
     },
     "owner": "bhavishm009"

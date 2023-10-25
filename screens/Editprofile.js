@@ -1,7 +1,7 @@
 import {
     View,
     Text,
-    TouchableOpacity,
+    Pressable,
     ScrollView,
     Image,
     TextInput,
@@ -104,9 +104,9 @@ import {
                 }}
               />
   
-              <TouchableOpacity onPress={handleOnPressStartDate}>
+              <Pressable onPress={handleOnPressStartDate}>
                 <Text style={{  color: COLORS.white }}>Close</Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
         </Modal>
@@ -129,7 +129,7 @@ import {
             justifyContent: "center",
           }}
         >
-          <TouchableOpacity
+          <Pressable
             onPress={() => navigation.goBack()}
             style={{
               position: "absolute",
@@ -141,7 +141,7 @@ import {
               size={24}
               color={COLORS.black}
             />
-          </TouchableOpacity>
+          </Pressable>
   
           <Text >Edit Profile</Text>
         </View>
@@ -153,7 +153,7 @@ import {
               marginVertical: 22,
             }}
           >
-            <TouchableOpacity onPress={handleImageSelection}>
+            <Pressable onPress={handleImageSelection}>
               <Image
                 source={{ uri: selectedImage }}
                 style={{
@@ -179,7 +179,7 @@ import {
                   color={COLORS.primary}
                 />
               </View>
-            </TouchableOpacity>
+            </Pressable>
           </View>
   
           <View>
@@ -272,7 +272,7 @@ import {
               }}
             >
               <Text >Date or Birth</Text>
-              <TouchableOpacity
+              <Pressable
                 onPress={handleOnPressStartDate}
                 style={{
                   height: 44,
@@ -286,7 +286,7 @@ import {
                 }}
               >
                 <Text>{selectedStartDate}</Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
   
@@ -317,7 +317,7 @@ import {
             </View>
           </View>
   
-          <TouchableOpacity
+          <Pressable
             style={{
               backgroundColor: COLORS.primary,
               height: 44,
@@ -334,7 +334,7 @@ import {
             >
               Save Change
             </Text>
-          </TouchableOpacity>
+          </Pressable>
   
           {renderDatePicker()}
         </ScrollView>
