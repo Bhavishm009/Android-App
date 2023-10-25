@@ -29,7 +29,6 @@ const Login = ({ navigation }) => {
     };
     try {
       let result = await login(data);
-      console.log(result)
       if (result.data.success) {
         navigation.navigate("Home");
       }
