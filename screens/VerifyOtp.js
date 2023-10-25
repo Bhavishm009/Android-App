@@ -4,7 +4,7 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   StyleSheet,
 } from "react-native";
 import COLORS from "../constants/colors";
@@ -92,7 +92,7 @@ export default function VerifyOtp({ navigation }) {
               key={index}
               ref={inputRefs[index]}
               style={styles.otpInput}
-              keyboardType="numeric"
+              inputMode="numeric"
               maxLength={1}
               value={digit}
               onChangeText={(text) => handleChangeText(text, index)}
@@ -100,9 +100,9 @@ export default function VerifyOtp({ navigation }) {
             />
           ))}
         </View>
-        <TouchableOpacity style={styles.verifyButton} onPress={handleVerify}>
+        <Pressable style={styles.verifyButton} onPress={handleVerify}>
           <Text style={styles.verifyButtonText}>Verify</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </LinearGradient>
   );

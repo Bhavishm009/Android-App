@@ -4,8 +4,6 @@ import {
   Image,
   Pressable,
   TextInput,
-  TouchableOpacity,
-  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -37,8 +35,8 @@ const Login = ({ navigation }) => {
     }
   };
 
-  function goToHome() {
-    navigation.navigate("Fetch");
+  function goToHome(){
+    navigation.navigate("Home");
   }
 
   return (
@@ -95,12 +93,12 @@ const Login = ({ navigation }) => {
             <TextInput
               value={email}
               onChangeText={setEmail}
-              keyboardType="email-address"
+              inputMode="email"
               maxLength={50}
               minLength={8}
               autoCapitalize="none"
               autoCorrect={false}
-              returnKeyType="done"
+              enterKeyHint="done"
               placeholder="Enter your email address"
               placeholderTextColor={COLORS.black}
               style={{
@@ -136,12 +134,12 @@ const Login = ({ navigation }) => {
             <TextInput
               value={password}
               onChangeText={setPassword}
-              keyboardType="default"
+              inputMode="text"
               maxLength={20}
               minLength={8}
               autoCapitalize="none"
               autoCorrect={false}
-              returnKeyType="done"
+              enterKeyHint="done"
               placeholder="Enter your password"
               placeholderTextColor={COLORS.black}
               secureTextEntry={isPasswordShown}
@@ -150,7 +148,7 @@ const Login = ({ navigation }) => {
               }}
             />
 
-            <TouchableOpacity
+            <Pressable
               onPress={() => setIsPasswordShown(!isPasswordShown)}
               style={{
                 position: "absolute",
@@ -162,7 +160,7 @@ const Login = ({ navigation }) => {
               ) : (
                 <Ionicons name="eye" size={24} color={COLORS.black} />
               )}
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
 
@@ -234,7 +232,7 @@ const Login = ({ navigation }) => {
             justifyContent: "center",
           }}
         >
-          <TouchableOpacity
+          <Pressable
             onPress={() => console.log("Pressed")}
             style={{
               flex: 1,
@@ -259,9 +257,9 @@ const Login = ({ navigation }) => {
             />
 
             <Text>Facebook</Text>
-          </TouchableOpacity>
+          </Pressable>
 
-          <TouchableOpacity
+          <Pressable
             onPress={() => console.log("Pressed")}
             style={{
               flex: 1,
@@ -286,7 +284,7 @@ const Login = ({ navigation }) => {
             />
 
             <Text>Google</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
 
         <View

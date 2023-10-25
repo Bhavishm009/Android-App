@@ -1,29 +1,9 @@
-// import React from 'react'
-// import { View, Text ,StyleSheet} from 'react-native'
-
-// function ProfileScreen() {
-//     return (
-//         <View style={styles.container}>
-//             <Text>ProfileScreen</Text>
-//         </View>
-//     )
-// }
-
-// export default ProfileScreen
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center'
-//     }
-// })
 import React, { useState } from "react";
 import {
     View,
     Text,
     Image,
-    TouchableOpacity,
+    Pressable,
     useWindowDimensions,
     FlatList,
   } from "react-native";
@@ -252,7 +232,7 @@ import {
           </View>
   
           <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
+            <Pressable
               style={{
                 width: 124,
                 height: 36,
@@ -271,9 +251,9 @@ import {
               >
                 Edit Profile
               </Text>
-            </TouchableOpacity>
+            </Pressable>
   
-            <TouchableOpacity
+            <Pressable
               style={{
                 width: 124,
                 height: 36,
@@ -292,7 +272,7 @@ import {
               >
                 Add Friend
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
   
