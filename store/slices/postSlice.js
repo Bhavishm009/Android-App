@@ -2,12 +2,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const post = createApi({
   reducerPath: "post",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.126.129:7000/api/" }), // Replace with your API URL
+  baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.1.37:8000" }), // Replace with your API URL
   tagTypes: ["Post"],
   
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => "posts",
+      query: () => "/api/posts",
       providesTags: ["Post"],
       pollingInterval: 10000,
     }),
@@ -17,7 +17,7 @@ export const post = createApi({
         formData.append("description", newPost.description);
         formData.append("image", newPost.image, newPost.image.name);
         return {
-          url: "posts",
+          url: "/api/posts",
           method: "POST",
           body: formData,
         };
@@ -26,7 +26,7 @@ export const post = createApi({
     }),
     editPost: builder.mutation({
       query: (post) => ({
-        url: `posts/${post.id}`,
+        url: `/api/posts/${post.id}`,
         method: "PUT",
         body: post,
       }),
@@ -34,7 +34,7 @@ export const post = createApi({
     }),
     deletePost: builder.mutation({
       query: (postId) => ({
-        url: `posts/${postId}`,
+        url: `/api/posts/${postId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Post"],

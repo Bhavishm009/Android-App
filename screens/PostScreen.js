@@ -25,7 +25,7 @@ const PostScreen = () => {
           name: "image.jpg", 
         },
       };
-
+      console.log(newPost)
       addPost(newPost);
       setNewPostTitle("");
       setImageUri(null);
@@ -41,7 +41,7 @@ const PostScreen = () => {
     }
 
     const pickerResult = await ImagePicker.launchImageLibraryAsync();
-    if (!pickerResult.cancelled) {
+    if (!pickerResult.canceled) {
       setImageUri(pickerResult);
     }
   };
