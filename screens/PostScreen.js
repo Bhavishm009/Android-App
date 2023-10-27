@@ -5,35 +5,39 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
-  Text,
+  Text
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import { useAddPostMutation } from "../store/slices/postSlice";
-import Button from "../components/Button";
-const PostScreen = () => {
+import { useAddPostMutation } from "../store/slices/postSlice"
+import { Ionicons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
+const PostScreen = ({navigation}) => {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [imageUri, setImageUri] = useState(null);
   const [addPost] = useAddPostMutation();
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     if (newPostTitle.trim() !== "" && imageUri !== null) {
       const newPost = {
         description: newPostTitle,
         image: {
-          uri: imageUri.assets[0].uri,  // Access uri from assets
-          type: "image/jpeg", 
-          name: "image.jpg", 
+          uri: imageUri.assets[0].uri, // Access uri from assets
+          type: "image/jpeg",
+          name: "image.jpg",
         },
       };
-      console.log(newPost)
-      addPost(newPost);
-      setNewPostTitle("");
-      setImageUri(null);
+      const postResponse = await addPost(newPost);
+       if(postResponse?.data?.Success){ 
+        setNewPostTitle("");
+        setImageUri(null)
+        navigation.navigate("Timeline")
+      }
     }
   };
 
   const handleImagePicker = async () => {
-    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
       alert("Permission to access camera roll is required!");
@@ -48,17 +52,29 @@ const PostScreen = () => {
 
   return (
     <View style={styles.container}>
-      {imageUri && <Image source={{ uri: imageUri.assets[0].uri }} style={styles.image} />}
-      <TouchableOpacity onPress={handleImagePicker}>
-        <Text>Select Image</Text>
-      </TouchableOpacity>
       <TextInput
-        style={styles.input}
+        placeholder="Write your post here"
         value={newPostTitle}
         onChangeText={(text) => setNewPostTitle(text)}
-        placeholder="Enter post title"
+        style={styles.textInput}
       />
-      <Button title="Add Post" onPress={handleAdd} />
+      {imageUri && (
+        <Image source={{ uri: imageUri.assets[0].uri }} style={styles.image} />
+      )}
+      <View style={styles.iconContainer}>
+        <TouchableOpacity>
+          <Icon
+            name="camera"
+            onPress={handleImagePicker}
+            size={30}
+            color="lightblue"
+            style={styles.icon}
+          />
+        </TouchableOpacity>
+      <TouchableOpacity onPress={handleAdd} style={styles.addButton}>
+      <Text> Post</Text>
+      </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -66,20 +82,64 @@ const PostScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    marginTop: 30,
+    margin: 10,
+    borderWidth: 2,           // Border width
+    borderColor: 'grey',     // Border color
+    borderStyle: 'solid'
   },
   image: {
-    width: 100,
-    height: 100,
-    marginBottom: 30,
+    width: "100%",
+    height: "50%",
+    marginBottom: 10,
   },
-  input: {
-    height: 40,
+  Btn: {
+    marginTop: 10,
+  },
+  textInput: {
+    height: 50,
+    width: "100%",
+    fontSize: 20,
     borderColor: "gray",
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 8,
   },
+  uploadButton: {
+    width: 150,
+    height: 150,
+    marginTop: 10,
+    borderWidth: 1,
+    borderColor: "gray",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  iconContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  text:{
+    color:"white"
+  },
+  addButton: {
+    backgroundColor: "lightblue",
+    borderRadius: 5,
+    width:"50%",
+    height:"100%",
+    color:"white",
+    paddingVertical: 10,
+    alignItems: "center",
+  },
+  iconContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginBottom: 10,
+  },
+  icon: {
+    marginRight: 10,
+  },
 });
-
 export default PostScreen;

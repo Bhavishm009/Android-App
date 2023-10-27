@@ -7,6 +7,7 @@ import {
   Timeline,
 } from "../screens/index";
 import { MessageStack } from "../Navigation/MessageTabs";
+
 const Tab = createBottomTabNavigator();
 
 export function HomeTabs() {

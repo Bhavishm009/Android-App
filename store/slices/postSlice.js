@@ -7,9 +7,9 @@ export const post = createApi({
   
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => "/api/posts",
+      query: () => "/api",
       providesTags: ["Post"],
-      pollingInterval: 10000,
+      pollingInterval: 1000,
     }),
     addPost: builder.mutation({
       query: (newPost) => {

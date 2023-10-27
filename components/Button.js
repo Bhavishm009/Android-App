@@ -7,7 +7,7 @@ const Button = (props) => {
     const outlinedColor = COLORS.white;
     const bgColor = props.filled ? filledBgColor : outlinedColor;
     const textColor = props.filled ? COLORS.white : COLORS.primary;
-
+      
     return (
         <Pressable
             style={{
@@ -16,6 +16,7 @@ const Button = (props) => {
                 ...props.style
             }}
             onPress={props.onPress}
+            icon={props.icon}
         >
             <Text style={{ fontSize: 18, ... { color: textColor } }}>{props.title}</Text>
         </Pressable>
