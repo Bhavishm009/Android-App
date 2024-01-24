@@ -20,7 +20,9 @@ const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [response, setResponse] = useState([]);
+
   const [login] = useLoginMutation();
+
   const handleLogin = async () => {
     const data = {
       email: email,
@@ -28,6 +30,7 @@ const Login = ({ navigation }) => {
     };
     try {
       let result = await login(data);
+      console.log(result)
       if (result.data.success) {
         navigation.navigate("Home");
       }
@@ -296,7 +299,7 @@ const Login = ({ navigation }) => {
           }}
         >
           <Text style={{ fontSize: 16, color: COLORS.black }}>
-            Don't have an account ?{" "}
+            Don't have an account ?
           </Text>
           <Pressable onPress={() => navigation.navigate("Signup")}>
             <Text

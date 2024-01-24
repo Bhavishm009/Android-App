@@ -3,10 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl:
-      process.env.NODE_ENV === "development"
-        ? "http://192.168.1.37:8000"
-        : process.env.REACT_APP_BACKEND_URL,
+    baseUrl:"https://fullstack-app-8urj.onrender.com"
   }),
   endpoints: (builder) => ({
     fetchData: builder.query({
@@ -32,6 +29,13 @@ export const api = createApi({
       query: (userData) => ({
         url: "/api/login",
         method: "POST",
+        body: userData, // Assuming userData is an object containing login data
+      }),
+    }),
+    profile: builder.mutation({
+      query: (userData) => ({
+        url: `/api/users/${userData.id}`,
+        method: "GET",
         body: userData, // Assuming userData is an object containing login data
       }),
     }),

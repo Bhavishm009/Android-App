@@ -15,7 +15,7 @@ const PostScreen = () => {
   const [imageUri, setImageUri] = useState(null);
   const [addPost] = useAddPostMutation();
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     if (newPostTitle.trim() !== "" && imageUri !== null) {
       const newPost = {
         description: newPostTitle,
@@ -25,8 +25,11 @@ const PostScreen = () => {
           name: "image.jpg", 
         },
       };
-      console.log(newPost)
-      addPost(newPost);
+     let result = await addPost(newPost);
+     console.log(result)
+     if (result.data) {
+       alert("Post added successfully!");
+     }
       setNewPostTitle("");
       setImageUri(null);
     }

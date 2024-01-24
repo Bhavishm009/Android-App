@@ -13,6 +13,7 @@ import COLORS from "../constants/colors";
 
 const Timeline = () => {
   const { data: posts = [], error, isLoading } = useGetPostsQuery();
+  console.log(posts);
 
   return (
     <FlatList

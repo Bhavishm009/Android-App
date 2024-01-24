@@ -2,12 +2,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const post = createApi({
   reducerPath: "post",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.1.37:8000" }), // Replace with your API URL
+  baseQuery: fetchBaseQuery({ baseUrl: "https://fullstack-app-8urj.onrender.com" }), // Replace with your API URL
   tagTypes: ["Post"],
-  
+  // https://fullstack-app-8urj.onrender.com/api/
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => "/api/posts",
+      query: () => "/api/",
       providesTags: ["Post"],
       pollingInterval: 10000,
     }),
